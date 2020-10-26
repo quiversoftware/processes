@@ -17,7 +17,7 @@ import DetailForm from '@/components/diagnosis/vgeditor/EditorDetailPanel/Detail
 export default {
   name: 'MindDetailPanel',
   components: {
-    DetailForm
-  }
+    DetailForm,
+  },
 }
 </script>

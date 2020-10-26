@@ -1,5 +1,5 @@
 <template>
-  <toolbar class='toolbar'>
+  <toolbar class="toolbar">
     <toolbar-button command="undo" />
     <toolbar-button command="redo" />
     <toolbar-button command="zoomIn" icon="zoom-in" text="Zoom In" />
@@ -14,16 +14,17 @@
 </template>
 
 <script>
-import { Toolbar } from 'vg-editor'
 import ToolbarButton from './ToolbarButton'
-import '@/components/diagnosis/vgeditor/EditorToolbar/style.styl'
 
 export default {
   name: 'MindToolbar',
 
   components: {
-    Toolbar,
-    ToolbarButton
-  }
+    ToolbarButton,
+  },
 }
 </script>
+
+<style lang="stylus" scoped>
+@import "./style.styl"
+</style>

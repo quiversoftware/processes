@@ -1,6 +1,6 @@
 <template>
-  <v-app-bar :clipped-left="clipped" fixed app>
-    <v-toolbar-title v-text="title" />
+  <v-app-bar app>
+    <!-- <v-app-bar-nav-icon @click="toggleMiniVariant"></v-app-bar-nav-icon> -->
     <v-spacer />
     <v-btn depressed>
       <v-icon left>mdi-magnify</v-icon>
@@ -17,7 +17,7 @@
     <!--  user information  -->
     <v-divider inset vertical></v-divider>
     <v-col class="hidden-xs-only" sm="1" md="1">
-      <strong v-html="user.name"></strong>
+      <strong>{{ user.name }}</strong>
     </v-col>
     <v-avatar size="36px">
       <img v-if="user.avatar" alt="Avatar" :src="user.avatar" />
@@ -32,7 +32,6 @@ export default {
   data() {
     return {
       clipped: true,
-      drawer: false,
       fixed: false,
       title: 'Customer Portal',
       notifications: false,
@@ -40,9 +39,14 @@ export default {
         avatar: 'https://avatars0.githubusercontent.com/u/9064066?v=4&s=460',
         name: 'John Doe',
         color: 'red',
-        icon: 'people'
-      }
+        icon: 'people',
+      },
     }
-  }
+  },
+  // methods: {
+  //   toggleMiniVariant() {
+  //     this.$store.commit('toggle')
+  //   },
+  // },
 }
 </script>

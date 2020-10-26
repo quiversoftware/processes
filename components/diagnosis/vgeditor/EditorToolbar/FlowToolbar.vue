@@ -11,23 +11,28 @@
     <toolbar-button command="resetZoom" icon="actual-size" text="Actual Size" />
     <toolbar-button command="toBack" icon="to-back" text="To Back" />
     <toolbar-button command="toFront" icon="to-front" text="To Front" />
-    <toolbar-button command="multiSelect" icon="multi-select" text="Multi Select" />
+    <toolbar-button
+      command="multiSelect"
+      icon="multi-select"
+      text="Multi Select"
+    />
     <toolbar-button command="addGroup" icon="group" text="Add Group" />
     <toolbar-button command="unGroup" icon="ungroup" text="Ungroup" />
   </toolbar>
 </template>
 
 <script>
-import { Toolbar } from 'vg-editor'
 import ToolbarButton from '@/components/diagnosis/vgeditor/EditorToolbar/ToolbarButton'
-import '@/components/diagnosis/vgeditor/EditorToolbar/style.styl'
 
 export default {
   name: 'FlowToolbar',
 
   components: {
-    Toolbar,
-    ToolbarButton
-  }
+    ToolbarButton,
+  },
 }
 </script>
+
+<style lang="stylus" scope>
+@import './style.styl'
+</style>

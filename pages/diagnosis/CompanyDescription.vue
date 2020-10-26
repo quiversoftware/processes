@@ -3,42 +3,31 @@
     <v-row>
       <v-col>
         <v-stepper v-model="stepNumber" vertical>
-          <v-stepper-step step="1" :complete="stepNumber > 1" editable>
-            ¿A qué se dedica la empresa?
-          </v-stepper-step>
-          <v-stepper-content step="1">
-            <v-textarea
-              solo
-              outlined
-              name="input-step-1"
+          <template v-for="step in steps">
+            <v-stepper-step
+              :key="`${step.index}-step`"
+              :step="step.index"
+              :complete="stepNumber > step.index"
               label="..."
-            ></v-textarea>
-            <v-btn color="primary" @click="stepNumber = 2">Continue</v-btn>
-          </v-stepper-content>
-          <v-stepper-step step="2" :complete="stepNumber > 2" editable>
-            ¿Cuál es el objetivo?
-          </v-stepper-step>
-          <v-stepper-content step="2">
-            <v-textarea
-              solo
-              outlined
-              name="input-step-2"
-              label="..."
-            ></v-textarea>
-            <v-btn color="primary" @click="stepNumber = 3">Continue</v-btn>
-          </v-stepper-content>
-          <v-stepper-step step="3" :complete="stepNumber > 3" editable>
-            ¿Cuál es la visión?
-          </v-stepper-step>
-          <v-stepper-content step="3">
-            <v-textarea
-              solo
-              outlined
-              name="input-step-3"
-              label="..."
-            ></v-textarea>
-            <v-btn color="primary">Continue</v-btn>
-          </v-stepper-content>
+              editable
+            >
+              {{ step.title }}
+            </v-stepper-step>
+            <v-stepper-content
+              :key="`${step.index}-content`"
+              :step="step.index"
+            >
+              <v-textarea
+                solo
+                outlined
+                :name="step.name"
+                label="..."
+              ></v-textarea>
+              <v-btn color="primary" @click="stepNumber = step.index + 1">
+                Continue
+              </v-btn>
+            </v-stepper-content>
+          </template>
         </v-stepper>
       </v-col>
     </v-row>
@@ -61,8 +50,30 @@ export default {
   name: 'CompanyDescription',
   data() {
     return {
-      stepNumber: 1
+      stepNumber: 1,
+      steps: [
+        {
+          index: 1,
+          name: '',
+          title: '¿A qué se dedica la empresa?',
+        },
+        {
+          index: 2,
+          name: '',
+          title: 'Giro de la empresa',
+        },
+        {
+          index: 3,
+          name: '',
+          title: 'Misión de la empresa?',
+        },
+        {
+          index: 4,
+          name: '',
+          title: 'Visión de la empresa',
+        },
+      ],
     }
-  }
+  },
 }
 </script>

@@ -27,19 +27,12 @@
 </template>
 
 <script>
-import { NodeMenu, EdgeMenu, GroupMenu, MultiMenu, CanvasMenu, ContextMenu } from 'vg-editor'
 import MenuLi from './MenuItem'
 
 export default {
   name: 'FlowContextMenu',
   components: {
-    NodeMenu,
-    EdgeMenu,
-    GroupMenu,
-    MultiMenu,
-    CanvasMenu,
-    ContextMenu,
-    MenuLi
-  }
+    MenuLi,
+  },
 }
 </script>

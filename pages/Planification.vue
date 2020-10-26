@@ -4,10 +4,6 @@
 
 <script>
 export default {
-  name: "Planification"
+  name: 'Planification',
 }
 </script>
-
-<style scoped>
-
-</style>

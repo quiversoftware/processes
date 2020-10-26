@@ -1,9 +1,10 @@
+<!--https://chrisshen93.github.io/VGEditor/-->
 <template>
   <v-container>
     <v-row>
       <v-col>
         <v-sheet height="650px">
-          <v-g-editor style="height: 600px;" class="demo">
+          <v-g-editor style="height: 600px" class="demo">
             <v-row>
               <v-col cols="12" md="12">
                 <div class="demo-chart__header">
@@ -13,10 +14,10 @@
             </v-row>
             <v-divider></v-divider>
             <v-row>
-              <v-col cols="12" md="9" class="mx-0 px-0">
+              <v-col cols="12" md="9" class="ml-2 pl-1">
                 <div class="demo-chart__container">
-                  <div class="demo-chart__main" style="height: 550px;">
-                    <mind :data="data" :onNodeClick="handleNodeClick" />
+                  <div class="demo-chart__main" style="height: 550px">
+                    <mind :data="data" :on-node-click="handleNodeClick" />
                   </div>
                 </div>
               </v-col>
@@ -144,20 +145,20 @@ const data = {
   ],
 }
 export default {
-  name: 'test',
-  data() {
-    return { data }
-  },
-  methods: {
-    handleNodeClick(e) {
-      console.log(e)
-    },
-  },
+  name: 'Ishikawa',
   components: {
     MindDetailPanel,
     MindToolbar,
     MindContextMenu,
     EditorMinimap,
+  },
+  data() {
+    return { data }
+  },
+  methods: {
+    handleNodeClick(e) {
+      // console.log(e)
+    },
   },
 }
 </script>

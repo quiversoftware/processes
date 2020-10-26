@@ -1,22 +1,33 @@
+<!--https://chrisshen93.github.io/VGEditor/-->
 <template>
   <v-container>
     <v-row>
       <v-col>
         <v-sheet height="650px">
-          <v-g-editor style="height: 600px;" class="demo">
+          <v-g-editor style="height: 600px" class="demo">
             <v-row>
               <v-col cols="12" md="12">
                 <div class="demo-chart__header">
-                  <mind-toolbar />
+                  <flow-toolbar />
                 </div>
               </v-col>
             </v-row>
             <v-divider></v-divider>
             <v-row>
-              <v-col cols="12" md="9" class="mx-0 px-0">
+              <v-col cols="12" md="1">
+                <div class="demo-chart__sidebar">
+                  <flow-item-panel />
+                </div>
+              </v-col>
+              <v-divider vertical class="mx-0"></v-divider>
+              <v-col cols="12" md="8" class="mx-0 px-0">
                 <div class="demo-chart__container">
-                  <div class="demo-chart__main" style="height: 550px;">
-                    <mind :data="data" :onNodeClick="handleNodeClick" />
+                  <div class="demo-chart__main" style="height: 550px">
+                    <flow
+                      :data="flowChartData"
+                      :on-node-click="handleNodeClick"
+                      :graph="{ mode: 'readOnly' }"
+                    />
                   </div>
                 </div>
               </v-col>
@@ -24,7 +35,7 @@
               <v-col>
                 <v-row>
                   <v-col cols="12" md="11">
-                    <mind-detail-panel />
+                    <flow-detail-panel />
                   </v-col>
                 </v-row>
                 <div class="demo-chart__panel">
@@ -32,7 +43,12 @@
                 </div>
               </v-col>
             </v-row>
-            <mind-context-menu />
+            <flow-context-menu />
+            <register-edge
+              name="custom-polyline"
+              extend="flow-polyline"
+              :config="customEdgeConfig"
+            />
           </v-g-editor>
         </v-sheet>
       </v-col>
@@ -41,123 +57,45 @@
 </template>
 
 <script>
-import { MindToolbar } from '@/components/diagnosis/vgeditor/EditorToolbar'
-import { MindDetailPanel } from '@/components/diagnosis/vgeditor/EditorDetailPanel'
+import { FlowToolbar } from '@/components/diagnosis/vgeditor/EditorToolbar'
+import { FlowDetailPanel } from '@/components/diagnosis/vgeditor/EditorDetailPanel'
 import EditorMinimap from '@/components/diagnosis/vgeditor/EditorMinimap'
-import { MindContextMenu } from '@/components/diagnosis/vgeditor/EditorContextMenu'
+import { FlowContextMenu } from '@/components/diagnosis/vgeditor/EditorContextMenu'
+import { FlowItemPanel } from '@/components/diagnosis/vgeditor/EditorItemPanel'
 
-const data = {
-  roots: [
-    {
-      label: 'Problema',
-      children: [
-        {
-          label: '',
-          side: 'left',
-          children: [
-            {
-              label: 'Hombre',
-              side: 'left',
-              children: [
-                {
-                  label: 'factor 1',
-                },
-                {
-                  label: 'factor 2',
-                },
-              ],
-            },
-            {
-              label: 'Máquina',
-              side: 'left',
-              children: [
-                {
-                  label: 'factor 1',
-                },
-                {
-                  label: 'factor 2',
-                },
-              ],
-            },
-            {
-              label: 'Entorno',
-              side: 'left',
-              children: [
-                {
-                  label: 'factor 1',
-                  children: [
-                    {
-                      label: 'factor 1.1',
-                    },
-                    {
-                      label: 'factor 1.2',
-                    },
-                    {
-                      label: 'factor 1.3',
-                    },
-                  ],
-                },
-                {
-                  label: 'factor 2',
-                },
-                {
-                  label: 'factor 3',
-                },
-              ],
-            },
-            {
-              label: 'Material',
-              side: 'left',
-              children: [
-                {
-                  label: 'factor 1',
-                },
-              ],
-            },
-            {
-              label: 'Método',
-              side: 'left',
-              children: [
-                {
-                  label: 'factor 1',
-                },
-                {
-                  label: 'factor 2',
-                  children: [
-                    {
-                      label: 'factor 2.2',
-                    },
-                  ],
-                },
-                {
-                  label: 'factor 3',
-                },
-                {
-                  label: 'factor 4',
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-  ],
-}
+const data = {}
+
 export default {
   name: 'Ishikawa',
+  components: {
+    FlowDetailPanel,
+    FlowToolbar,
+    FlowContextMenu,
+    EditorMinimap,
+    FlowItemPanel,
+  },
   data() {
-    return { data }
+    return {
+      flowChartData: data,
+      customEdgeConfig: {
+        getActivedStyle(item) {
+          return {
+            lineWidth: 3,
+          }
+        },
+        getSelectedStyle(item) {
+          return {
+            lineWidth: 3,
+          }
+        },
+      },
+    }
   },
   methods: {
     handleNodeClick(e) {
+      // eslint-disable-next-line no-console
       console.log(e)
     },
-  },
-  components: {
-    MindDetailPanel,
-    MindToolbar,
-    MindContextMenu,
-    EditorMinimap,
   },
 }
 </script>

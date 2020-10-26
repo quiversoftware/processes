@@ -1,27 +1,26 @@
 <template>
   <command :name="command">
-    <icon :type="iconType"/>
+    <icon :type="iconType" />
   </command>
 </template>
 
 <script>
-import { Command } from 'vg-editor'
 import Icon from '../Icon'
 
 export default {
   name: 'ToolbarButton',
 
+  components: {
+    Icon,
+  },
+
+  // eslint-disable-next-line vue/require-prop-types
   props: ['command', 'icon', 'text'],
 
   computed: {
-    iconType () {
+    iconType() {
       return `icon-${this.icon || this.command}`
-    }
+    },
   },
-
-  components: {
-    Command,
-    Icon
-  }
 }
 </script>

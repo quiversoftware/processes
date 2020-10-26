@@ -15,17 +15,16 @@
 </template>
 
 <script>
-import { NodeMenu, CanvasMenu, ContextMenu } from 'vg-editor'
 import MenuLi from './MenuItem'
-import '@/components/diagnosis/vgeditor/EditorContextMenu/style.styl'
 
 export default {
   name: 'FlowContextMenu',
   components: {
-    NodeMenu,
-    CanvasMenu,
-    ContextMenu,
-    MenuLi
-  }
+    MenuLi,
+  },
 }
 </script>
+
+<style lang="stylus" scope>
+@import './style.styl'
+</style>
